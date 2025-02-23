@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NR Pay - 提款</title>
+</head>
+<body style="background-color: black; color: white; display: flex; justify-content: center; align-items: center; height: 100vh; flex-direction: column;">
+  <h1>提款申請</h1>
+  <form id="withdrawForm" style="display: flex; flex-direction: column; gap: 10px;">
+    <input type="text" placeholder="銀行代號" id="bankCode" required>
+    <input type="text" placeholder="銀行帳號" id="bankAccount" required>
+    <input type="number" placeholder="提款金額" id="amount" required>
+    <button type="submit">提交提款申請</button>
+  </form>
+
+  <p id="message"></p>
+
+  <script>
+    document.getElementById('withdrawForm').addEventListener('submit', async function(event) {
+      event.preventDefault();
+
+      const bankCode = document.getElementById('bankCode').value;
+      const bankAccount = document.getElementById('bankAccount').value;
+      const amount = document.getElementById('amount').value;
+
+      const response = await fetch('https://你的伺服器網址/api.php?action=withdraw', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `bank_code=${bankCode}&bank_account=${bankAccount}&amount=${amount}&user_id=1`
+      });
+
+      const result = await response.text();
+      document.getElementById('message').innerText = result;
+    });
+  </script>
+</body>
+</html>
