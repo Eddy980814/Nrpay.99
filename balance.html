@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>查詢餘額</title>
+</head>
+<body>
+  <h1>查詢餘額</h1>
+  <form id="balanceForm">
+    <label for="user_id">用戶 ID:</label><br>
+    <input type="number" id="user_id" required><br><br>
+    <button type="button" onclick="checkBalance()">查詢餘額</button>
+  </form>
+  <p id="result"></p>
+
+  <script>
+    function checkBalance() {
+      const user_id = document.getElementById('user_id').value;
+
+      fetch(`https://whitesmoke-caribou-519217.hostingersite.com/api.php?action=balance&user_id=${user_id}`)
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('result').innerText = data;
+        })
+        .catch(error => {
+          document.getElementById('result').innerText = '查詢失敗';
+        });
+    }
+  </script>
+</body>
+</html>
