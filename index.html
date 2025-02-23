@@ -1,12 +1,39 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NR Pay 新融支付</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NR Pay 新融支付</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.2em;
+    }
+  </style>
+  <script>
+    // 3-5 秒後自動跳轉到主畫面
+    setTimeout(function() {
+      window.location.href = "dashboard.html"; // 跳轉到主頁面
+    }, 5000); // 5000 毫秒 = 5 秒
+  </script>
 </head>
-<body style="background-color: black; color: white; display: flex; justify-content: center; align-items: center; height: 100vh; flex-direction: column;">
-    <h1>歡迎使用 NR Pay 新融支付</h1>
-    <p>版本 3.1.4</p>
+<body>
+  <h1>歡迎使用 NR Pay 新融支付</h1>
+  <p>版本 3.1.4</p>
 </body>
 </html>
